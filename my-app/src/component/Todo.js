@@ -13,16 +13,18 @@ const Todo = () => {
 
     const handleChanges = e => {
         setNewItem(e.target.value);
+        console.log('this is value', e.target.value)
       };
     
 
     return(
         <div>
             <h1>Todo:</h1>
-
+            <p>{newItem}</p>
+            {console.log('new Item:', newItem)}
             <div>
                 <input
-                className="title-input"
+                className="item-input"
                 type="text"
                 name="newItem"
                 value={newItem}
