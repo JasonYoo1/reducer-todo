@@ -4,24 +4,23 @@ import React, { useState, useReducer } from 'react';
 import { initialState, reducer } from '../reducers/reducer';
 
 
-const Todo = () => {
+export const Todo = () => {
     const [newItem, setNewItem] = useState();
     // useReducer - takes in a reducer, and an initialState obj
     // returns - a state obj, and the dispatch fn
     const [state, dispatch] = useReducer (reducer, initialState);
-    console.log('This is my state:', state)
-
+    let result = state.map(a => a.item);
+    console.log('map results', result)
+    // console.log('This is my state:', state)
     const handleChanges = e => {
         setNewItem(e.target.value);
-        console.log('this is value', e.target.value)
       };
     
+      
 
     return(
         <div>
-            <h1>Todo:</h1>
-            <p>{newItem}</p>
-            {console.log('new Item:', newItem)}
+            {/* {console.log('new Item:', newItem)} */}
             <div>
                 <input
                 className="item-input"
@@ -30,6 +29,13 @@ const Todo = () => {
                 value={newItem}
                 onChange={handleChanges}
                 />
+                
+                {state.map(a => {
+                    return(
+                        <div>{a.item}</div>
+                    )
+                })}
+                
                 <button
                 onClick={() =>
                 dispatch({ type: 'ADD_TODO', payload: newItem })
@@ -38,6 +44,7 @@ const Todo = () => {
             </div>
         </div>
     )
+    
 }
 
-export default Todo;
+
