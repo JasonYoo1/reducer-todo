@@ -8,8 +8,14 @@ export const initialState = {
 
 
   export const reducer = (state, action) => {
-    switch(action.type){
-    default:
+    switch (action.type) {
+      case 'ADD_TODO':
+        return {
+          ...state,
+          completed: !state.completed
+        };
+      default:
         return state;
-  }
-}
+    }
+  };
+  
