@@ -9,8 +9,7 @@ export const Todo = () => {
     // useReducer - takes in a reducer, and an initialState obj
     // returns - a state obj, and the dispatch fn
     const [state, dispatch] = useReducer (reducer, initialState);
-    let result = state.map(a => a.item);
-    console.log('map results', result)
+
     // console.log('This is my state:', state)
     const handleChanges = e => {
         setNewItem(e.target.value);
@@ -29,10 +28,11 @@ export const Todo = () => {
                 value={newItem}
                 onChange={handleChanges}
                 />
-                
+
                 {state.map(a => {
                     return(
-                        <div>{a.item}</div>
+                        <div key= {a.id} >{a.item} <button>Remove Item</button></div>
+                        
                     )
                 })}
                 

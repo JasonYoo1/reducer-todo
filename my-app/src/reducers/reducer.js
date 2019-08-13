@@ -17,7 +17,6 @@ export const initialState = [
             ...state,
             {
                 item: action.payload,
-                completed: false
              }
             ];
       default:
